@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+
+from services.views import SubscriptionViewSet
+
+r = DefaultRouter()
+r.register(r'api/subscriptions', SubscriptionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+] + r.urls
